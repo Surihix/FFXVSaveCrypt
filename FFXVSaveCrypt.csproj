@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core.cs" />
+    <Compile Include="FFXVSaveCrypt\Core.cs" />
     <Compile Include="FFXVSaveCrypt\Crypto\CryptoVariables.cs" />
     <Compile Include="FFXVSaveCrypt\Crypto\Decrypt.cs" />
     <Compile Include="FFXVSaveCrypt\Crypto\Encrypt.cs" />
