@@ -87,17 +87,18 @@ namespace FFXVSaveCrypt.Crypto
         }
 
 
-        private static uint ComputeChecksum()
-        {
-            return 0;
-        }
-
-
         private static void ShuffleData(CryptoVariables cryptoVars, byte[] encryptedData)
         {
             var bufferSize = encryptedData.Length >> 4;
             var keyStack = SharedFunctions.GenerateKeyStack(cryptoVars, bufferSize);
 
+            for (var shuffleIterator = 1; shuffleIterator < bufferSize; shuffleIterator++)
+            {
+                var destination = new List<ulong>();
+                var source = new List<ulong>();
+
+
+            }
         }
     }
 }
