@@ -36,8 +36,11 @@ namespace FFXVSaveCrypt.Crypto
                 encryptedData[i] = (byte)(encryptedData[i] - tweakBytesList[i & 0xF]);
             }
 
+            File.WriteAllBytes("dec_1", encryptedData);
+
             // Shuffle the encrypted data
             ShuffleData(cryptoVars, encryptedData);
+            File.WriteAllBytes("dec_2", encryptedData);
 
             // Decrypt the data with AES algorithm
             var ivValList = new List<byte>();
