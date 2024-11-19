@@ -20,7 +20,7 @@ public static class BinaryReaderHelpers
     public static short ReadBytesInt16(this BinaryReader reader, bool isBigEndian)
     {
         var readValueBuffer = reader.ReadBytes(2);
-        ReverseIfBigEndian(isBigEndian, readValueBuffer);
+        ReverseBuffer(isBigEndian, readValueBuffer);
 
         return BitConverter.ToInt16(readValueBuffer, 0);
     }
@@ -37,7 +37,7 @@ public static class BinaryReaderHelpers
     public static ushort ReadBytesUInt16(this BinaryReader reader, bool isBigEndian)
     {
         var readValueBuffer = reader.ReadBytes(2);
-        ReverseIfBigEndian(isBigEndian, readValueBuffer);
+        ReverseBuffer(isBigEndian, readValueBuffer);
 
         return BitConverter.ToUInt16(readValueBuffer, 0);
     }
@@ -54,7 +54,7 @@ public static class BinaryReaderHelpers
     public static int ReadBytesInt32(this BinaryReader reader, bool isBigEndian)
     {
         var readValueBuffer = reader.ReadBytes(4);
-        ReverseIfBigEndian(isBigEndian, readValueBuffer);
+        ReverseBuffer(isBigEndian, readValueBuffer);
 
         return BitConverter.ToInt32(readValueBuffer, 0);
     }
@@ -71,7 +71,7 @@ public static class BinaryReaderHelpers
     public static uint ReadBytesUInt32(this BinaryReader reader, bool isBigEndian)
     {
         var readValueBuffer = reader.ReadBytes(4);
-        ReverseIfBigEndian(isBigEndian, readValueBuffer);
+        ReverseBuffer(isBigEndian, readValueBuffer);
 
         return BitConverter.ToUInt32(readValueBuffer, 0);
     }
@@ -88,7 +88,7 @@ public static class BinaryReaderHelpers
     public static long ReadBytesInt64(this BinaryReader reader, bool isBigEndian)
     {
         var readValueBuffer = reader.ReadBytes(8);
-        ReverseIfBigEndian(isBigEndian, readValueBuffer);
+        ReverseBuffer(isBigEndian, readValueBuffer);
 
         return BitConverter.ToInt64(readValueBuffer, 0);
     }
@@ -105,7 +105,7 @@ public static class BinaryReaderHelpers
     public static ulong ReadBytesUInt64(this BinaryReader reader, bool isBigEndian)
     {
         var readValueBuffer = reader.ReadBytes(8);
-        ReverseIfBigEndian(isBigEndian, readValueBuffer);
+        ReverseBuffer(isBigEndian, readValueBuffer);
 
         return BitConverter.ToUInt64(readValueBuffer, 0);
     }
@@ -122,7 +122,7 @@ public static class BinaryReaderHelpers
     public static float ReadBytesFloat(this BinaryReader reader, bool isBigEndian)
     {
         var readValueBuffer = reader.ReadBytes(4);
-        ReverseIfBigEndian(isBigEndian, readValueBuffer);
+        ReverseBuffer(isBigEndian, readValueBuffer);
 
         return BitConverter.ToSingle(readValueBuffer, 0);
     }
@@ -139,7 +139,7 @@ public static class BinaryReaderHelpers
     public static double ReadBytesDouble(this BinaryReader reader, bool isBigEndian)
     {
         var readValueBuffer = reader.ReadBytes(8);
-        ReverseIfBigEndian(isBigEndian, readValueBuffer);
+        ReverseBuffer(isBigEndian, readValueBuffer);
 
         return BitConverter.ToDouble(readValueBuffer, 0);
     }
@@ -157,7 +157,7 @@ public static class BinaryReaderHelpers
     public static string ReadBytesString(this BinaryReader reader, int readCount, bool shouldReverse)
     {
         var readValueBuffer = reader.ReadBytes(readCount);
-        ReverseIfBigEndian(shouldReverse, readValueBuffer);
+        ReverseBuffer(shouldReverse, readValueBuffer);
 
         return Encoding.UTF8.GetString(readValueBuffer).Replace("\0", "");
     }
@@ -204,7 +204,7 @@ public static class BinaryReaderHelpers
     }
 
 
-    private static void ReverseIfBigEndian(bool isBigEndian, byte[] readValueBuffer)
+    private static void ReverseBuffer(bool isBigEndian, byte[] readValueBuffer)
     {
         if (isBigEndian)
         {
@@ -281,5 +281,5 @@ public static class BinaryReaderHelpers
                 }
             }
         }
-    }    
+    }
 }
