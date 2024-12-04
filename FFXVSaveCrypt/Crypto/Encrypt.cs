@@ -10,7 +10,7 @@ namespace FFXVSaveCrypt.Crypto
         public static void BeginEncryption(string inFile)
         {
             // Get crypto related variables 
-            // and the data to encrypt
+            // and the decrypted data
             var cryptoVars = new CryptoVariables();
             byte[] dataToEncrypt = new byte[] { };
 
@@ -63,13 +63,16 @@ namespace FFXVSaveCrypt.Crypto
                 encryptedData[i] = (byte)(encryptedData[i] + tweakBytesList[i & 0xF]);
             }
 
-            // Create the final encrypted file
-            var outFile = Path.Combine(Path.GetDirectoryName(inFile), Path.GetFileNameWithoutExtension(inFile) + ".enc");
-
-            if (File.Exists(outFile))
+            // Create backup of the original file
+            if (File.Exists(inFile + ".dec.bak"))
             {
-                File.Delete(outFile);
+                File.Delete(inFile + ".dec.bak");
             }
+
+            File.Move(inFile, inFile + ".dec.bak");
+
+            // Create the final encrypted file
+            var outFile = inFile;
 
             using (var outFileWriter = new BinaryWriter(File.Open(outFile, FileMode.Append, FileAccess.Write)))
             {

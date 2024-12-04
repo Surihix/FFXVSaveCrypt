@@ -12,6 +12,19 @@ namespace FFXVSaveCrypt
 
             if (args.Length < 2)
             {
+                var filesSupported = new string[]
+                {
+                    "Files Supported:",
+                    "avatar0.save",
+                    "avatar0_mod.save",
+                    "gameplay0.save",
+                    "gameplay_mission_temporary0.save",
+                    "live_config_data.save",
+                    "snapshotlink.sl",
+                    "system_data.save",
+                    "universal_data.save", ""
+                };
+
                 var actionSwitchesMsgArray = new string[]
                 {
                     "Action Switches:",
@@ -22,11 +35,11 @@ namespace FFXVSaveCrypt
                 var exampleMsgArray = new string[]
                 {
                     "Examples:",
-                    "To decrypt a save file: FFXVSaveCrypt.exe -d \"gameplay0.save\"",
-                    "To encrypt a save file: FFXVSaveCrypt.exe -e \"gameplay0.save\""
+                    "To decrypt a file: FFXVSaveCrypt.exe -d \"gameplay0.save\"",
+                    "To encrypt a file: FFXVSaveCrypt.exe -e \"gameplay0.save\""
                 };
 
-                ErrorExit($"Enough arguments not specified\n\n{string.Join("\n", actionSwitchesMsgArray)}\n\n{string.Join("\n", exampleMsgArray)}");
+                ErrorExit($"Enough arguments not specified\n\n{string.Join("\n", filesSupported)}\n\n{string.Join("\n", actionSwitchesMsgArray)}\n\n{string.Join("\n", exampleMsgArray)}");
             }
 
             if (!File.Exists(args[1]))

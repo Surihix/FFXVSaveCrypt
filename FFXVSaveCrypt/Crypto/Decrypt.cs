@@ -62,8 +62,16 @@ namespace FFXVSaveCrypt.Crypto
                 }
             }
 
+            // Create backup of the original file      
+            if (File.Exists(inFile + ".bak"))
+            {
+                File.Delete(inFile + ".bak");
+            }
+
+            File.Move(inFile, inFile + ".bak");
+
             // Create the final decrypted file
-            var outFile = Path.Combine(Path.GetDirectoryName(inFile), Path.GetFileName(inFile) + ".dec");
+            var outFile = inFile;
 
             if (File.Exists(outFile))
             {
