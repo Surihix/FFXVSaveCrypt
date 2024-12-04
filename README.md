@@ -18,8 +18,10 @@ The program should be launched from command prompt with a function switch along 
 <br>- ``universal_data.save``
 
 <br>**Commandline usage examples:**
-<br>`` FFXVSaveCrypt.exe -d -filelist "gameplay0.save" ``
-<br>`` FFXVSaveCrypt.exe -e -filelist "gameplay0.save" ``
+<br>`` FFXVSaveCrypt.exe -d "gameplay0.save" ``
+<br>`` FFXVSaveCrypt.exe -e "gameplay0.save" ``
+
+<br>**Note:** A backup of the file that you have specified after the function switch, will be created when using the tool's functions.
 
 # Credits
 - [yretenai](https://github.com/yretenai) - for helping with the crypto
